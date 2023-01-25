@@ -31,7 +31,7 @@ mongoose.connect(url)
 
 app.post('/student',urlencodedParser,async(req,res)=>{
     const user = new student(req.body);
-  
+    
     try {
       await user.save();
       res.send(user);
