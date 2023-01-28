@@ -15,6 +15,14 @@ const schema = new mongoose.Schema({
         type:String,
         required:true,
     },
+    yearofpass:{
+        type:String,
+        required:true,
+    },
+    designation:{
+        type:String,
+        
+    },
     email:{
         type:String,
         required:true,
