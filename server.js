@@ -4,8 +4,7 @@ const bodyparser = require('body-parser')
 const student = require('./modal')
 const app = Express();
 app.use(cors())
-app.use(bodyparser.json())
-
+app.use(bodyparser.json({limit: '50mb'}))
 var urlencodedParser = bodyparser.urlencoded({ extended: false })
 
 /*mongoose connection*/
@@ -43,10 +42,13 @@ app.post('/student',urlencodedParser,async(req,res)=>{
 
 /* This is the code for form submitting */
 
-app.get('/details',urlencodedParser,async(req,res)=>{
+app.get('/details/:search',urlencodedParser,async(req,res)=>{
 
+     const hallnumber = req.params.search
+     
     try {
-      const studata= await students.find();
+      
+      const studata= await students.find({hallnumber:hallnumber});
       res.status(200).json(studata);
     } catch (error) {
       res.status(500).send(error);

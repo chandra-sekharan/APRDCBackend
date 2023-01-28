@@ -23,6 +23,10 @@ const schema = new mongoose.Schema({
         type:String,
         required:true,
     },
+    image: {
+        type:String,
+        required:true,
+    },
     datecreated:Date,
     dateupdated:Date
 })
