@@ -9,7 +9,9 @@ const schema = new mongoose.Schema({
     },
     hallnumber:{
         type:String,
+        unique: true,
         required:true,
+        
     },
     branch:{
         type:String,
@@ -38,6 +40,8 @@ const schema = new mongoose.Schema({
     datecreated:Date,
     dateupdated:Date
 })
+
+
 
 const students = new mongoose.model("students",schema)
 

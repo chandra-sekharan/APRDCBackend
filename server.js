@@ -1,7 +1,6 @@
 const Express = require('express')
 const cors = require('cors')
 const bodyparser = require('body-parser')
-const student = require('./modal')
 const app = Express();
 app.use(cors())
 app.use(bodyparser.json({limit: '50mb'}))
@@ -29,7 +28,9 @@ mongoose.connect(url)
 /* This is the code for form submitting */
 
 app.post('/student',urlencodedParser,async(req,res)=>{
-    const user = new student(req.body);
+   
+
+    const user = new students(req.body);
     
     try {
       await user.save();
@@ -37,7 +38,7 @@ app.post('/student',urlencodedParser,async(req,res)=>{
     } catch (error) {
       res.status(500).send(error);
     }
-    
+      
 })
 
 /* This is the code for form submitting */
